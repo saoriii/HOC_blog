@@ -19,4 +19,4 @@ Route::resource('posts', 'PostsController', ['only' =>[
     'index', 'show'
 ]]);
 
-Route::resource('categories', 'CategoriesController', ['only' => [ 'index', 'shox']]);
+Route::resource('categories', 'CategoriesController', ['only' => [ 'index', 'show']]);
