@@ -16,3 +16,7 @@ Route::get('/', function () {
 });
 
 Route::resource('comments', 'AdminCommentsController', ['only' => ['index', 'edit', 'delete']]);
+
+Route::get("/admin", "AdminController@dashboard");
+
+Route::get("/home", "HomeController@affichHome");
