@@ -14,3 +14,15 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+
+
+Route::get('admin/medias', 'AdminMediasController@index');
+
+Route::get('admin/medias/edit', 'AdminMediasController@edit');
+
+Route::get('admin/medias/upload', 'AdminMediasController@upload');
+
+Route::get('admin/medias/delete', 'AdminMediasController@delete');
+
+Route::resource('admin/categories', 'AdminCategoriesController');
