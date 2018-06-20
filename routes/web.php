@@ -14,3 +14,14 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+//Appeler les url via le controller
+Route::resource('admin/users', 'AdminUsersController');
+
+Route::resource('admin/posts', 'AdminPostsController');
+
+
+
+
+
+
