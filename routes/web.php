@@ -49,7 +49,7 @@ Route::match(['put', 'patch'], 'admin/medias/{medias}', 'AdminMediasController@u
 Route::resource('admin/categories', 'AdminCategoriesController');
 
 // Route comments
-Route::resource('/admin/comments', 'AdminCommentsController', ['only' => ['index', 'edit', 'update']]);
+Route::resource('/admin/comments', 'AdminCommentsController', ['only' => ['index', 'edit', 'update', 'destroy']]);
 
 // Route admin 
 Route::get("/admin", "AdminController@dashboard");
