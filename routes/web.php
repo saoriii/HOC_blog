@@ -55,7 +55,7 @@ Route::resource('/comments', 'AdminCommentsController', ['only' => ['index', 'ed
 Route::get("/admin", "AdminController@dashboard");
 
 // Route home
-Route::get("/home", "HomeController@affichHome");
+Route::get("/", "HomeController@affichHome");
 
 
 

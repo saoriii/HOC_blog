@@ -7,6 +7,6 @@ use Illuminate\Http\Request;
 class HomeController extends Controller
 {
     public function affichHome(){
-        return view("Home/home");
+        return view("home");
     }
 }
