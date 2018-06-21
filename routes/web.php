@@ -15,7 +15,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::resource('comments', 'AdminCommentsController', ['only' => ['index', 'edit', 'update']]);
+Route::resource('/comments', 'AdminCommentsController', ['only' => ['index', 'edit', 'update']]);
 
 Route::get("/admin", "AdminController@dashboard");
 
