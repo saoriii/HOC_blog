@@ -13,7 +13,7 @@ class CategoriesController extends Controller
      */
     public function index()
     {
-        return view (categories.index);
+        return view ('categories.index');
     }
 
     /**
@@ -24,7 +24,7 @@ class CategoriesController extends Controller
      */
     public function show($id)
     {
-        return view (categories.show);
+        return view ('categories.show');
     }
 
     /**
