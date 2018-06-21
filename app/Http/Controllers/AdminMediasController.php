@@ -10,7 +10,7 @@ class AdminMediasController extends Controller
         return("admin.medias.index");
     }
 
-    public function edit(){
+    public function edit($id){
         return("admin.medias.edit");
     }
 
@@ -18,10 +18,17 @@ class AdminMediasController extends Controller
         return("admin.medias.upload");
     }
 
-    public function delete(){
-        return("admin.medias.delete");
+    public function destroy($id){
+
     }
 
+    public function store(Request $request, $id){
+
+    }
+
+    public function update(Request $request, $id){
+
+    }
 
 
 

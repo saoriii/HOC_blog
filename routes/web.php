@@ -19,10 +19,17 @@ Route::get('/', function () {
 
 Route::get('admin/medias', 'AdminMediasController@index');
 
-Route::get('admin/medias/edit', 'AdminMediasController@edit');
+Route::get('admin/medias/{medias}/edit', 'AdminMediasController@edit');
 
 Route::get('admin/medias/upload', 'AdminMediasController@upload');
 
-Route::get('admin/medias/delete', 'AdminMediasController@delete');
+Route::delete('admin/medias/{medias}', 'AdminMediasController@destroy');
+
+Route::post('admin/medias', 'AdminMediasController@store');
+
+Route::put('admin/medias/{medias}', 'AdminMediasController@update');
+
+
+
 
 Route::resource('admin/categories', 'AdminCategoriesController');
