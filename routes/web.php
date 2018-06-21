@@ -15,7 +15,15 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+// Route posts visiteurs
+Route::resource('posts', 'PostsController', ['only' =>[
+    'index', 'show'
+]]);
 
+// Route categories visiteurs
+Route::resource('categories', 'CategoriesController', ['only' =>[
+    'index', 'show'
+]]);
 
 // Route medias
 Route::get('admin/medias', 'AdminMediasController@index');
@@ -42,4 +50,5 @@ Route::get("/admin", "AdminController@dashboard");
 
 // Route home
 Route::get("/home", "HomeController@affichHome");
+
 
