@@ -8,6 +8,6 @@
     <title>Delete</title>
 </head>
 <body>
-    Delete
+    Delete !
 </body>
 </html>
