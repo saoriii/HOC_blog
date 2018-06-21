@@ -79,6 +79,5 @@ class AdminPostsController extends Controller
      */
     public function destroy($id)
     {
-        return view('admin.posts.delete');
     }
 }
