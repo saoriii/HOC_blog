@@ -15,8 +15,31 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+
+
+// Route medias
+Route::get('admin/medias', 'AdminMediasController@index');
+
+Route::get('admin/medias/{medias}/edit', 'AdminMediasController@edit');
+
+Route::get('admin/medias/upload', 'AdminMediasController@upload');
+
+Route::delete('admin/medias/{medias}', 'AdminMediasController@destroy');
+
+Route::post('admin/medias', 'AdminMediasController@store');
+
+Route::match(['put', 'patch'], 'admin/medias/{medias}', 'AdminMediasController@update');
+
+// Route catgories
+Route::resource('admin/categories', 'AdminCategoriesController');
+
+// Route comments
 Route::resource('/comments', 'AdminCommentsController', ['only' => ['index', 'edit', 'update']]);
 
+// Route admin 
 Route::get("/admin", "AdminController@dashboard");
 
+
+// Route home
 Route::get("/home", "HomeController@affichHome");
+
