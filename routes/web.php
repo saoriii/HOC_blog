@@ -16,6 +16,7 @@ Route::get('/', function () {
 });
 
 
+
 // Route medias
 Route::get('admin/medias', 'AdminMediasController@index');
 
@@ -29,6 +30,16 @@ Route::post('admin/medias', 'AdminMediasController@store');
 
 Route::match(['put', 'patch'], 'admin/medias/{medias}', 'AdminMediasController@update');
 
-
 // Route catgories
 Route::resource('admin/categories', 'AdminCategoriesController');
+
+// Route comments
+Route::resource('/comments', 'AdminCommentsController', ['only' => ['index', 'edit', 'update']]);
+
+// Route admin 
+Route::get("/admin", "AdminController@dashboard");
+
+
+// Route home
+Route::get("/home", "HomeController@affichHome");
+
