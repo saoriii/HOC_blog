@@ -16,7 +16,7 @@ Route::get('/', function () {
 });
 
 
-
+// Route medias
 Route::get('admin/medias', 'AdminMediasController@index');
 
 Route::get('admin/medias/{medias}/edit', 'AdminMediasController@edit');
@@ -27,9 +27,8 @@ Route::delete('admin/medias/{medias}', 'AdminMediasController@destroy');
 
 Route::post('admin/medias', 'AdminMediasController@store');
 
-Route::put('admin/medias/{medias}', 'AdminMediasController@update');
+Route::match(['put', 'patch'], 'admin/medias/{medias}', 'AdminMediasController@update');
 
 
-
-
+// Route catgories
 Route::resource('admin/categories', 'AdminCategoriesController');
