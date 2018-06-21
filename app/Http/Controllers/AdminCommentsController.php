@@ -13,7 +13,7 @@ class AdminCommentsController extends Controller
      */
     public function index()
     {
-        return view('comments/index');
+        return view('admin.comments.index');
     }
 
     /**
@@ -47,7 +47,7 @@ class AdminCommentsController extends Controller
      */
     public function edit($id)
     {
-
+        return view('admin.comments.edit');
     }
 
     /**
@@ -57,7 +57,7 @@ class AdminCommentsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $id) // Fonction Delete
     {
 
     }
