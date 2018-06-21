@@ -15,6 +15,13 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+
+// Route users admin
+Route::resource('admin/users', 'AdminUsersController');
+
+// Route posts admin
+Route::resource('admin/posts', 'AdminPostsController');
+
 // Route posts visiteurs
 Route::resource('posts', 'PostsController', ['only' =>[
     'index', 'show'
@@ -47,8 +54,8 @@ Route::resource('/comments', 'AdminCommentsController', ['only' => ['index', 'ed
 // Route admin 
 Route::get("/admin", "AdminController@dashboard");
 
-
 // Route home
 Route::get("/home", "HomeController@affichHome");
+
 
 
