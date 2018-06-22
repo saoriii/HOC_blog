@@ -17,8 +17,8 @@ class CreateCommentsTable extends Migration
             $table->increments('id');
             $table->integer('post_id');
             $table->boolean('is_active');
-            $table->text('content', 500);
-            $table->string('author', 100);
+            $table->text('content');
+            $table->string('author');
             $table->string('email')->unique();
 
 
