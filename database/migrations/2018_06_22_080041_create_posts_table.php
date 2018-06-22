@@ -20,9 +20,6 @@ class CreatePostsTable extends Migration
             $table->integer('user_id')->index()->unsigned();
             $table->integer('photo_id')->index()->unsigned();
             $table->integer('category_id')->index()->unsigned();
-
-
-
             $table->timestamps();
         });
     }
