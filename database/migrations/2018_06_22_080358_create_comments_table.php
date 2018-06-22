@@ -19,7 +19,7 @@ class CreateCommentsTable extends Migration
             $table->boolean('is_active');
             $table->text('content');
             $table->string('author');
-            $table->string('email')->unique();
+            $table->string('email');
 
 
 
