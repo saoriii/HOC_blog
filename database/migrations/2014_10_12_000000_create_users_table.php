@@ -20,8 +20,9 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();
-            $table->integer('role_id');
-            $table->boolean('is_active');
+            $table->integer('role_id')->index()->nullable()->unsigned();
+            $table->boolean('is_active')->default(0);
+
         });
     }
 
