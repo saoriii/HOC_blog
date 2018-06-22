@@ -20,7 +20,6 @@ class CreatePostsTable extends Migration
             $table->integer('user_id')->index()->unsigned();
             $table->integer('photo_id')->index()->unsigned();
             $table->integer('category_id')->index()->unsigned();
-
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();
 
