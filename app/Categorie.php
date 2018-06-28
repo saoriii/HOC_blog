@@ -15,5 +15,8 @@ class Categorie extends Model
         return $this->hasMany("App\Post");
     }
 
+    public function photos(){
+        return $this->morphMany("App\Photo");
+    }
 
 }
