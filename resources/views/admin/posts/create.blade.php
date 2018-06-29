@@ -17,4 +17,6 @@
 
     {!! Form::close() !!}
 
+    @include("includes.errors")
+
 @stop
