@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Post;
+use App\User;
+use App\Category;
+use App\Comment;
 use App\Http\Requests\AdminPostsRequest;
 
 class AdminPostsController extends Controller
@@ -41,7 +44,17 @@ class AdminPostsController extends Controller
      */
     public function store(AdminPostsRequest $request)
     {
-        //
+        $User = User::findOrFail(1);
+
+        $User->posts()->create([
+
+            'title' => $request->input('title'),
+            'content' => $request->input('content'),
+            'is_active' => $request->input('is_active'),
+            'category_id' => $request->input('category_id')
+        ]);
+
+        return redirect()->route('posts.index');
     }
 
     /**
@@ -52,7 +65,10 @@ class AdminPostsController extends Controller
      */
     public function show($id)
     {
-        return view('admin.posts.show');
+        $Post = Post::findOrFail($id);
+
+
+        return view('admin.posts.show', compact('Post'));
     }
 
     /**
@@ -63,7 +79,9 @@ class AdminPostsController extends Controller
      */
     public function edit($id)
     {
-        return view('admin.posts.edit');
+        $Post = Post::findOrFail($id);
+        return view('admin.posts.edit', compact('Post'));
+
     }
 
     /**
@@ -75,7 +93,21 @@ class AdminPostsController extends Controller
      */
     public function update(AdminPostsRequest $request, $id)
     {
-        //
+        $Post = Post::findOrFail($id);
+         $Post->update(
+             [
+                 "title" => $request->input("title"),
+                 "content" => $request->input("content"),
+                 "is_active" => $request->input("is_active"),
+                 "category_id" => $request->input("category_id")
+             ]
+         );
+
+         $Post->save();
+
+//         OU : $Post->update($request->all());
+
+         return redirect()->route("posts.index");
     }
 
     /**
@@ -86,5 +118,10 @@ class AdminPostsController extends Controller
      */
     public function destroy($id)
     {
+        Post::whereId($id)->delete();
+
+        return redirect()->route('posts.index');
+
+
     }
 }

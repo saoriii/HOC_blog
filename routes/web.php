@@ -22,15 +22,15 @@ Route::resource('admin/users', 'AdminUsersController');
 // Route posts admin
 Route::resource('admin/posts', 'AdminPostsController');
 
-// Route posts visiteurs
-Route::resource('posts', 'PostsController', ['only' =>[
-    'index', 'show'
-]]);
+//// Route posts visiteurs
+//Route::resource('posts', 'PostsController', ['only' =>[
+//    'index', 'show'
+//]]);
 
-// Route categories visiteurs
-Route::resource('categories', 'CategoriesController', ['only' =>[
-    'index', 'show'
-]]);
+//// Route categories visiteurs
+//Route::resource('categories', 'CategoriesController', ['only' =>[
+//    'index', 'show'
+//]]);
 
 // Route medias
 Route::get('admin/medias', 'AdminMediasController@index');
@@ -54,12 +54,12 @@ Route::resource('/admin/comments', 'AdminCommentsController', ['only' => ['index
 // Route admin 
 Route::get("/admin", "AdminController@dashboard");
 
-// Route home
-Route::get("/", "HomeController@affichHome");
+//// Route home
+//Route::get("/", "HomeController@affich");
 
 
 
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/admin', 'HomeController@index')->name('home');
