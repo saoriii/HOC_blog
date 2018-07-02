@@ -17,7 +17,7 @@
         {!! Form::select("is_active", ["0" => "Inactif", "1" => "Actif"], null) !!}<br />
 
         {!! Form::label("category_id", "Categorie") !!}
-        {!! Form::select("category_id", ["0" => "Cat"]) !!}
+        {!! Form::select("category_id", ['2' => "Cat"]) !!}
 
         {!! Form::submit("Mettre à jour") !!}
 

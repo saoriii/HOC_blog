@@ -5,6 +5,7 @@
     <title>ADMIN</title>
 </head>
 <body>
-<p>Admin</p>
+<p><a href="{{route('posts.index')}}">Gérer les posts</a></p>
+<p><a href="{{route('categories.index')}}">Gérer les catégories</a></p>
 </body>
 </html>

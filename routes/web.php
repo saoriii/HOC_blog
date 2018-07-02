@@ -52,7 +52,7 @@ Route::resource('admin/categories', 'AdminCategoriesController');
 Route::resource('/admin/comments', 'AdminCommentsController', ['only' => ['index', 'edit', 'update', 'destroy']]);
 
 // Route admin 
-Route::get("/admin", "AdminController@dashboard");
+Route::get("/admin", "AdminController@dashboard")->name('dashboard');
 
 //// Route home
 //Route::get("/", "HomeController@affich");
@@ -62,4 +62,4 @@ Route::get("/admin", "AdminController@dashboard");
 
 Auth::routes();
 
-Route::get('/admin', 'HomeController@index')->name('home');
+Route::get('/', 'HomeController@index')->name('home');
