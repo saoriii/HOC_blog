@@ -2,7 +2,7 @@
 
 @section("content")
 
-    <div style="text-align:center; margin-top: 200px;">
+
     <header><a href="{{route('posts.index')}}">Accueil</a></header>
 
     {!! Form::model($Post, ["method" => "PATCH", "action" => ["AdminPostsController@update", $Post->id ]]) !!}
@@ -17,7 +17,7 @@
         {!! Form::select("is_active", ["0" => "Inactif", "1" => "Actif"], null) !!}<br />
 
         {!! Form::label("category_id", "Categorie") !!}
-        {!! Form::select("category_id", ['2' => "Cat"]) !!}
+        {!! Form::select("category_id", $plucked) !!}
 
         {!! Form::submit("Mettre à jour") !!}
 
@@ -29,7 +29,7 @@
 
     {!! Form::close() !!}
 
-    </div>
+
 
 @include('includes.errors')
 

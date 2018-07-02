@@ -33,17 +33,17 @@ Route::resource('admin/posts', 'AdminPostsController');
 //]]);
 
 // Route medias
-Route::get('admin/medias', 'AdminMediasController@index');
+Route::get('admin/medias', 'AdminMediasController@index')->name('medias.index');
 
-Route::get('admin/medias/{medias}/edit', 'AdminMediasController@edit');
+Route::get('admin/medias/{medias}/edit', 'AdminMediasController@edit')->name('medias.edit');
 
-Route::get('admin/medias/upload', 'AdminMediasController@upload');
+Route::get('admin/medias/upload', 'AdminMediasController@upload')->name('medias.upload');
 
-Route::delete('admin/medias/{medias}', 'AdminMediasController@destroy');
+Route::delete('admin/medias/{medias}', 'AdminMediasController@destroy')->name('medias.destroy');
 
-Route::post('admin/medias', 'AdminMediasController@store');
+Route::post('admin/medias', 'AdminMediasController@store')->name('medias.store');
 
-Route::match(['put', 'patch'], 'admin/medias/{medias}', 'AdminMediasController@update');
+Route::match(['put', 'patch'], 'admin/medias/{medias}', 'AdminMediasController@update')->name('medias.update');
 
 // Route catgories
 Route::resource('admin/categories', 'AdminCategoriesController');

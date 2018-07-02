@@ -33,7 +33,8 @@ class AdminPostsController extends Controller
     public function create()
     {
 
-        return view('admin.posts.create');
+        $plucked = Category::pluck('name', 'id');
+        return view('admin.posts.create', compact('plucked'));
     }
 
     /**
@@ -45,6 +46,7 @@ class AdminPostsController extends Controller
     public function store(AdminPostsRequest $request)
     {
         $User = User::findOrFail(1);
+
 
         $User->posts()->create([
 
@@ -80,7 +82,9 @@ class AdminPostsController extends Controller
     public function edit($id)
     {
         $Post = Post::findOrFail($id);
-        return view('admin.posts.edit', compact('Post'));
+
+            $plucked = Category::pluck('name', 'id');
+        return view('admin.posts.edit', compact('Post', 'plucked'));
 
     }
 

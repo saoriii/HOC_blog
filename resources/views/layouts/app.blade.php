@@ -12,6 +12,18 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
+    <style>
+
+        body {
+            text-align: center;
+        }
+        header a {
+            color: black !important;
+            font-size: 2em;
+            margin-left: -500px;
+        }
+    </style>
 </head>
 <body>
     <div id="app">
@@ -29,7 +41,7 @@
 
                     <!-- Branding Image -->
                     <a class="navbar-brand" href="{{ url('/') }}">
-                        {{ config('app.name', 'Laravel') }}
+                        TaCoCaFa
                     </a>
                 </div>
 

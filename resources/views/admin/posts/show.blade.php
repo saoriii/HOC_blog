@@ -2,10 +2,12 @@
 @extends('layouts.app')
 
 @section('content')
-<div style="text-align:center; margin-top: 200px;">
+
     <header><a href="{{route('posts.index')}}">Accueil</a></header>
  <h1> {{$Post->title}}</h1>
  <p>{{$Post->content}}</p>
+
+    <p>Rédigé par {{$Post->user->name}}</p>
     <p>Catégorie : {{$Post->category->name}}</p>
 
     <p><a href="{{route('posts.edit', $Post->id)}}">Modifier</a></p>
@@ -35,7 +37,6 @@
             @endif
         @endforeach
 
-</div>
 
 
 

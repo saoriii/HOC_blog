@@ -2,9 +2,8 @@
 
 @section('content')
 
-    <div style="text-align:center; margin-top: 200px;">
 
-<p><a href="{{route('dashboard')}}">TABLEAU DE BORD</a></p>
+<header><a href="{{route('dashboard')}}">TABLEAU DE BORD</a></header>
 
 <ul>
     @foreach($posts as $post)
@@ -22,7 +21,7 @@
 <p><a href="{{route('posts.create')}}">Créer un post</a></p>
 
 
-    </div>
+
 
 
 
