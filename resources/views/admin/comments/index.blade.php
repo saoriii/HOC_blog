@@ -1,13 +1,25 @@
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>index Comments</title>
-</head>
-<body>
-ma page index
-</body>
-</html>
+@extends('layouts.app')
+
+@section('content')
+
+<header><a href="{{route('dashboard')}}">TABLEAU DE BORD</a></header>
+
+<ul>
+    @foreach($comments as $comment)
+        <li><a href="{{route('posts.show', $comment->post->id)}}">{{$comment->post->title}}</a>
+        {{$comment->content}}
+        {{$comment->author}}
+        {{$comment->email}}
+        
+        <a href="{{route('comments.edit', $comment->id)}}">Modifier</a></li>
+        {!! Form::open(['method' => 'DELETE', 'action' => ['AdminCommentsController@destroy', $comment->id]]) !!}
+
+            {!! Form::submit('Supprimer') !!}
+
+        {!! Form::close() !!}
+
+    @endforeach
+</ul>
+
+
+@stop

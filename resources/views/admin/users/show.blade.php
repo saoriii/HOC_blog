@@ -13,6 +13,7 @@
     @endforeach
 </ul>
 
+
 <a href="{{route('users.edit', $User->id)}}">Modifier</a>
 
 {!! Form::open(['method' => 'DELETE', 'action' => ['AdminUsersController@destroy', $User->id]]) !!}

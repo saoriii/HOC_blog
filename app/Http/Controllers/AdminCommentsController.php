@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Comment;
 
 class AdminCommentsController extends Controller
 {
@@ -13,7 +14,9 @@ class AdminCommentsController extends Controller
      */
     public function index()
     {
-        return view('admin.comments.index');
+        $comments = Comment::all();
+
+        return view('admin.comments.index', compact('comments'));
     }
 
     /**
@@ -47,7 +50,9 @@ class AdminCommentsController extends Controller
      */
     public function edit($id)
     {
-        return view('admin.comments.edit');
+        $Comment = Comment::findOrFail($id);
+
+        return view('admin.comments.edit', compact('Comment'));
     }
 
     /**
@@ -59,7 +64,20 @@ class AdminCommentsController extends Controller
      */
     public function update(Request $request, $id) // Fonction Delete
     {
-        //
+        $Comment = Comment::findOrFail($id);
+
+        $Comment->update(
+            [
+                'content' => $request->content,
+                'author' => $request->author,
+                'email' => $request->email,
+                'is_active' => $request->is_active
+            ]
+            );
+
+        $Comment->save();
+
+            return redirect()->route('comments.index');
     }
 
     /**
@@ -70,6 +88,10 @@ class AdminCommentsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $Comment = Comment::findOrFail($id);
+
+        $Comment->delete();
+
+        return redirect()->route('comments.index');
     }
 }
