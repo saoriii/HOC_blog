@@ -37,9 +37,11 @@ class AdminUsersController extends Controller
      */
     public function store(Request $request)
     {
-        $Post = Post::findOrFail(1);
+       $file = $request->file('file');
+       $name = $file->getClientOriginalName();
+       $file->move('images', $name);
 
-        $Post->user()->create(
+        $User = User::create(
             [
                 'name' => $request->input('name'),
                 'password' => $request->input('password'),
@@ -47,6 +49,15 @@ class AdminUsersController extends Controller
                 'is_active' => $request->input('is_active')
             ]
             );
+
+
+        $User->photos()->create(
+            [
+                'file' => $name
+            ]
+            );
+
+     
 
         return redirect()->route('users.index');
     }
@@ -62,6 +73,8 @@ class AdminUsersController extends Controller
     public function show($id)
     {
         $User = User::findOrFail($id);
+
+        /*dd($User->photos);*/
 
         return view('admin.users.show', compact('User'));
     }
@@ -89,6 +102,10 @@ class AdminUsersController extends Controller
     {
         $User = User::findOrFail($id);
 
+        $file = $request->file('file');
+       $name = $file->getClientOriginalName();
+       $file->move('images', $name);
+
         $User->update(
             [
                 'name' => $request->input('name'),
@@ -97,6 +114,23 @@ class AdminUsersController extends Controller
                 'is_active' => $request->input('is_active')
             ]
             );
+
+        if(empty($User->photos)){
+            $User->photos()->create(
+                [
+                    'file' => $name
+                ]
+                );
+        }
+
+        else{
+            $User->photos()->update(
+                [
+                    'file' => $name
+                ]
+                );
+        }
+
 
         return redirect()->route('users.index');
     }

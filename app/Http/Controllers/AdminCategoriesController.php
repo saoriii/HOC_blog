@@ -38,13 +38,26 @@ class AdminCategoriesController extends Controller
      */
     public function store(Request $request)
     {
-        $Post = Post::findOrFail(1);
 
-        $Post->category()->create(
+        $file = $request->file('file');
+        $name = $file->getClientOriginalName();
+        $file->move('images', $name);
+
+
+        $Category = Category::create(
             [
-                'name' => $request->input('name')
+            'name' => $request->input('name')
             ]
-        );
+        ); 
+
+
+        $Category->photos()->create(
+            [
+                'file' => $name
+            ]
+            );
+
+
 
         return redirect(route('categories.index'));
     }
@@ -86,13 +99,28 @@ class AdminCategoriesController extends Controller
     {
         $Category = Category::findOrFail($id);
 
+
+        $file = $request->file('file');
+        $name = $file->getClientOriginalName();
+        $file->move('images', $name);
+
         $Category->update(
             [
                 'name' => $request->input('name')
             ]
         );
 
-        $Category->save();
+        if(empty($Category->photos()->first())){
+            $Category->photos()->create([
+                'file' => $name
+            ]
+            );
+        }else{
+            $Category->photos()->update([
+                'file' => $name
+            ]);
+        }
+
 
         return redirect(route('categories.index'));
     }

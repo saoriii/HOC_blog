@@ -13,8 +13,13 @@
     @endforeach
 </ul>
 
+@foreach ($User->photos as $photo)
 
-<a href="{{route('users.edit', $User->id)}}">Modifier</a>
+<img src='/images/{{$photo->file}}' />
+@endforeach
+
+
+<p><a href="{{route('users.edit', $User->id)}}">Modifier</a></p>
 
 {!! Form::open(['method' => 'DELETE', 'action' => ['AdminUsersController@destroy', $User->id]]) !!}
 

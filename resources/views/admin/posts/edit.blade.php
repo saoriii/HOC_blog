@@ -5,7 +5,7 @@
 
     <header><a href="{{route('posts.index')}}">Accueil</a></header>
 
-    {!! Form::model($Post, ["method" => "PATCH", "action" => ["AdminPostsController@update", $Post->id ]]) !!}
+    {!! Form::model($Post, ["method" => "PATCH", "action" => ["AdminPostsController@update", $Post->id ], 'files' => true]) !!}
 
         {!! Form::label("title", "Titre") !!}
         {!! Form::text("title", null) !!}<br />
@@ -18,6 +18,8 @@
 
         {!! Form::label("category_id", "Categorie") !!}
         {!! Form::select("category_id", $plucked) !!}
+
+        {!! Form::file('file', null) !!}
 
         {!! Form::submit("Mettre à jour") !!}
 

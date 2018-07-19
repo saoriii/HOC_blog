@@ -4,7 +4,7 @@
 
 <header><a href="{{route('users.index')}}">Accueil</a></header>
 
-{!! Form::open(['method' => 'POST', 'action' => 'AdminUsersController@store']) !!}
+{!! Form::open(['method' => 'POST', 'action' => 'AdminUsersController@store', 'files' => true]) !!}
 
     {!! Form::label('name', 'Nom') !!}
     {!! Form::text('name', null) !!}
@@ -17,6 +17,8 @@
 
     {!! Form::label('is_active', 'Affichage') !!}
     {!! Form::select('is_active', ['0' => 'Inactif', '1' => 'Actif']) !!}
+
+    {!! Form::file('file') !!}
 
     {!! Form::submit("Créer l'utilisateur") !!}
 

@@ -3,8 +3,15 @@
 @section("content")
 
     <header><a href="{{route('categories.index')}}">Accueil</a></header>
+    @foreach($Category->photos as $photo)
 
-    {{$Category->name}}
+    <img src="/images/{{$photo->file}}"/> 
+    @endforeach
+ 
+
+
+
+    <p>{{$Category->name}}</p>
 
     <p>Articles : </p>
     <ul>

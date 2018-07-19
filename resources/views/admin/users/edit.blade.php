@@ -2,7 +2,7 @@
 
 @section('content')
 
-{!! Form::model($User, ['method' => 'PATCH', 'action' => ['AdminUsersController@update', $User->id]]) !!}
+{!! Form::model($User, ['method' => 'PATCH', 'action' => ['AdminUsersController@update', $User->id], 'files' => true]) !!}
 
     {!! Form::label('name', 'Nom') !!}
     {!! Form::text('name', null) !!}
@@ -15,6 +15,8 @@
 
     {!! Form::label('is_active', 'Affichage') !!}
     {!! Form::select('is_active', ['0' => 'Inactif', '1' => 'Actif'], null) !!}
+
+    {!! Form::file('file', null) !!}
 
     {!! Form::submit("Mettre à jour") !!}
 
