@@ -37,9 +37,14 @@ class AdminUsersController extends Controller
      */
     public function store(Request $request)
     {
-       $file = $request->file('file');
-       $name = $file->getClientOriginalName();
-       $file->move('images', $name);
+        $file = $request->file('file');
+        if(!empty($file)) {
+
+            $name = $file->getClientOriginalName();
+
+            $file->move('images', $name);
+
+        }
 
         $User = User::create(
             [
@@ -50,12 +55,14 @@ class AdminUsersController extends Controller
             ]
             );
 
-
-        $User->photos()->create(
+        if(!empty($file)) {
+        
+            $User->photos()->create(
             [
                 'file' => $name
             ]
             );
+        }
 
      
 
@@ -103,8 +110,14 @@ class AdminUsersController extends Controller
         $User = User::findOrFail($id);
 
         $file = $request->file('file');
-       $name = $file->getClientOriginalName();
-       $file->move('images', $name);
+
+        if(!empty($file)) {
+
+            $name = $file->getClientOriginalName();
+
+            $file->move('images', $name);
+
+        }
 
         $User->update(
             [
@@ -115,20 +128,23 @@ class AdminUsersController extends Controller
             ]
             );
 
-        if(empty($User->photos)){
-            $User->photos()->create(
-                [
-                    'file' => $name
-                ]
-                );
-        }
+        if(!empty($file)) {
 
-        else{
-            $User->photos()->update(
-                [
-                    'file' => $name
-                ]
-                );
+            if(empty($User->photos()->first())){
+                $User->photos()->create(
+                    [
+                        'file' => $name
+                    ]
+                    );
+            }
+
+            else{
+                $User->photos()->update(
+                    [
+                        'file' => $name
+                    ]
+                    );
+            }
         }
 
 

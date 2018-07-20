@@ -15,12 +15,38 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+//route admin regroupees
+Route::group(['middleware' => 'auth'], function(){
+        // Route users admin
+    Route::resource('admin/users', 'AdminUsersController');
 
-// Route users admin
-Route::resource('admin/users', 'AdminUsersController');
 
-// Route posts admin
-Route::resource('admin/posts', 'AdminPostsController');
+    // Route posts admin
+    Route::resource('admin/posts', 'AdminPostsController');
+
+        // Route medias
+    Route::get('admin/medias', 'AdminMediasController@index')->name('medias.index');
+
+    Route::get('admin/medias/{medias}/edit', 'AdminMediasController@edit')->name('medias.edit');
+
+    Route::get('admin/medias/upload', 'AdminMediasController@upload')->name('medias.upload');
+
+    Route::delete('admin/medias/{medias}', 'AdminMediasController@destroy')->name('medias.destroy');
+
+    Route::post('admin/medias', 'AdminMediasController@store')->name('medias.store');
+
+        // Route catgories
+    Route::resource('admin/categories', 'AdminCategoriesController');
+
+    // Route comments
+    Route::resource('/admin/comments', 'AdminCommentsController', ['only' => ['index', 'edit', 'update', 'destroy']]);
+
+    // Route admin 
+    Route::get("/admin", "AdminController@dashboard")->name('dashboard');
+
+    Route::match(['put', 'patch'], 'admin/medias/{medias}', 'AdminMediasController@update')->name('medias.update');
+
+});
 
 
 Route::post('posts/comments/{id}', 'PostsController@comments')->name('posts.comments');
@@ -37,27 +63,10 @@ Route::resource('categories', 'CategoriesController', ['only' =>['index', 'show'
 
 );
 
-// Route medias
-Route::get('admin/medias', 'AdminMediasController@index')->name('medias.index');
 
-Route::get('admin/medias/{medias}/edit', 'AdminMediasController@edit')->name('medias.edit');
 
-Route::get('admin/medias/upload', 'AdminMediasController@upload')->name('medias.upload');
 
-Route::delete('admin/medias/{medias}', 'AdminMediasController@destroy')->name('medias.destroy');
 
-Route::post('admin/medias', 'AdminMediasController@store')->name('medias.store');
-
-Route::match(['put', 'patch'], 'admin/medias/{medias}', 'AdminMediasController@update')->name('medias.update');
-
-// Route catgories
-Route::resource('admin/categories', 'AdminCategoriesController');
-
-// Route comments
-Route::resource('/admin/comments', 'AdminCommentsController', ['only' => ['index', 'edit', 'update', 'destroy']]);
-
-// Route admin 
-Route::get("/admin", "AdminController@dashboard")->name('dashboard');
 
 //// Route home
 //Route::get("/", "HomeController@affich");
@@ -69,6 +78,6 @@ Auth::routes();
 
 Route::get('/', 'HomeController@index')->name('home');
 
-Auth::routes();
+// Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+// Route::get('/home', 'HomeController@index')->name('home');

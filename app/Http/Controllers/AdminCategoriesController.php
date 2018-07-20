@@ -40,8 +40,14 @@ class AdminCategoriesController extends Controller
     {
 
         $file = $request->file('file');
-        $name = $file->getClientOriginalName();
-        $file->move('images', $name);
+
+        if(!empty($file)) {
+
+            $name = $file->getClientOriginalName();
+
+            $file->move('images', $name);
+
+        }
 
 
         $Category = Category::create(
@@ -50,12 +56,14 @@ class AdminCategoriesController extends Controller
             ]
         ); 
 
+        if(!empty($file)) {
 
-        $Category->photos()->create(
-            [
-                'file' => $name
-            ]
-            );
+            $Category->photos()->create(
+                [
+                    'file' => $name
+                ]
+                );
+        }
 
 
 
@@ -101,8 +109,14 @@ class AdminCategoriesController extends Controller
 
 
         $file = $request->file('file');
-        $name = $file->getClientOriginalName();
-        $file->move('images', $name);
+
+        if(!empty($file)) {
+
+            $name = $file->getClientOriginalName();
+
+            $file->move('images', $name);
+
+        }
 
         $Category->update(
             [
@@ -110,15 +124,18 @@ class AdminCategoriesController extends Controller
             ]
         );
 
-        if(empty($Category->photos()->first())){
-            $Category->photos()->create([
-                'file' => $name
-            ]
-            );
-        }else{
-            $Category->photos()->update([
-                'file' => $name
-            ]);
+        if(!empty($file)) {
+
+            if(empty($Category->photos()->first())){
+                $Category->photos()->create([
+                    'file' => $name
+                ]
+                );
+            }else{
+                $Category->photos()->update([
+                    'file' => $name
+                ]);
+            }
         }
 
 
