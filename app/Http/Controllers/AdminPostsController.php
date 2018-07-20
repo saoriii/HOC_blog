@@ -47,6 +47,7 @@ class AdminPostsController extends Controller
      */
     public function store(AdminPostsRequest $request)
     {
+
         $User = Auth::user();
 
         $file = $request->file('file');

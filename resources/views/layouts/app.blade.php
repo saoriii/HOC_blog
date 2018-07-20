@@ -53,7 +53,7 @@
         @yield('content')
     </div>
 
-       <footer class="page-footer">
+       <!-- <footer class="page-footer">
           <div class="container">
             <div class="row">
               <div class="col l6 s12">
@@ -75,7 +75,7 @@
             <a class="grey-text text-lighten-4 right" href="#!">Plus de liens</a>
             </div>
           </div>
-        </footer>
+        </footer> -->
     <!-- Scripts -->
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     @yield('scripts')
