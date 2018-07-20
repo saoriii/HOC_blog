@@ -47,14 +47,26 @@ class AdminPostsController extends Controller
     {
         $User = User::findOrFail(1);
 
+       
 
-        $User->posts()->create([
+        $file = $request->file('file');
+        $name = $file->getClientOriginalName();
+        $file->move('images', $name);
+
+        $Post = $User->posts()->create([
 
             'title' => $request->input('title'),
             'content' => $request->input('content'),
             'is_active' => $request->input('is_active'),
             'category_id' => $request->input('category_id')
         ]);
+        
+
+        $Post->photos()->create(
+            [
+                'file' => $name
+            ]
+            );
 
         return redirect()->route('posts.index');
     }
@@ -98,6 +110,12 @@ class AdminPostsController extends Controller
     public function update(AdminPostsRequest $request, $id)
     {
         $Post = Post::findOrFail($id);
+
+        $file = $request->file('file');
+        $name = $file->getClientOriginalName();
+        $file->move('images', $name);
+
+
          $Post->update(
              [
                  "title" => $request->input("title"),
@@ -107,7 +125,26 @@ class AdminPostsController extends Controller
              ]
          );
 
-         $Post->save();
+         if(empty($Post->photos()->first())){
+
+            $Post->photos()->create(
+                [
+                    'file' => $name
+                ]
+                );
+        }
+
+        else{
+            $Post->photos()->update(
+                
+                [
+                    'file' => $name
+                ]
+                );
+        }
+
+
+        
 
 //         OU : $Post->update($request->all());
 

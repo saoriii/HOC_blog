@@ -22,10 +22,10 @@ Route::resource('admin/users', 'AdminUsersController');
 // Route posts admin
 Route::resource('admin/posts', 'AdminPostsController');
 
-//// Route posts visiteurs
-//Route::resource('posts', 'PostsController', ['only' =>[
-//    'index', 'show'
-//]]);
+// Route posts visiteurs
+Route::resource('posts', 'PostsController', ['only' =>[
+   'index', 'show'
+]]);
 
 //// Route categories visiteurs
 //Route::resource('categories', 'CategoriesController', ['only' =>[

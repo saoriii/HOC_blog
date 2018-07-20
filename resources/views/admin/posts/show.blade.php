@@ -5,6 +5,12 @@
 
     <header><a class="waves-effect waves-light btn" href="{{route('posts.index')}}">Accueil</a></header>
  <h1> {{$Post->title}}</h1>
+
+@foreach ($Post->photos as $photo)
+
+<img src='/images/{{$photo->file}}' />
+@endforeach
+
  <p>{{$Post->content}}</p>
 
     <p>Rédigé par {{$Post->user->name}}</p>
