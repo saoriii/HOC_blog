@@ -5,10 +5,10 @@
 
 <header><a class="waves-effect waves-light btn" href="{{route('dashboard')}}">TABLEAU DE BORD</a></header>
 
-<ul>
+<ul style="display: flex; justify-content: space-around; flex-wrap: wrap; width: 80%; margin: auto;">
     @foreach($posts as $post)
   
-         <li><a class="waves-effect waves-light btn" href="{{route('posts.show', $post->id)}}">{{$post->title}}</a></li>
+         <li style="margin-top: 20px;"><a class="waves-effect waves-light btn" href="{{route('posts.show', $post->id)}}">{{$post->title}}</a></li>
 
     @endforeach
 
