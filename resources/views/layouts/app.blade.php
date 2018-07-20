@@ -29,7 +29,7 @@
         @endauth
         <nav class="cardiff">
             <div class="nav-wrapper">
-                <a href="{{ url('/') }}" class="brand-logo">Blog Faresse</a>
+                <a href="{{ url('/posts') }}" class="brand-logo">Blog</a>
                 <ul class="right hide-on-med-and-down">
                     <li><a href="{{ route('users.index') }}"><i class="material-icons left">search</i>Rechercher</a></li>
                 </ul>

@@ -8,6 +8,8 @@ use App\User;
 use App\Category;
 use App\Comment;
 use App\Http\Requests\AdminPostsRequest;
+use Illuminate\Support\Facades\Auth;
+
 
 class AdminPostsController extends Controller
 {
@@ -45,13 +47,16 @@ class AdminPostsController extends Controller
      */
     public function store(AdminPostsRequest $request)
     {
-        $User = User::findOrFail(1);
-
-       
+        $User = Auth::user();
 
         $file = $request->file('file');
+        if(!empty($file)) {
+
         $name = $file->getClientOriginalName();
+
         $file->move('images', $name);
+
+        }
 
         $Post = $User->posts()->create([
 
@@ -61,12 +66,14 @@ class AdminPostsController extends Controller
             'category_id' => $request->input('category_id')
         ]);
         
+        if(!empty($file)) {
 
         $Post->photos()->create(
             [
                 'file' => $name
             ]
             );
+        }
 
         return redirect()->route('posts.index');
     }

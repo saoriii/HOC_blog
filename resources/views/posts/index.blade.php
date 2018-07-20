@@ -3,7 +3,7 @@
 @section('content')
 
 <a href="{{route('visiteurs.categories.index')}}">Catégories</a>
-<a href="{{route('posts.index')}}">Admin</a>
+<a href="{{route('dashboard')}}">Admin</a>
 
 <table>
     <th>

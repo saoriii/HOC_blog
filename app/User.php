@@ -40,4 +40,10 @@ class User extends Authenticatable
         return $this->hasMany('App\Post');
     }
 
+    public function isAdmin(){
+
+        return ($this->roles->name == 'Administrateur') ? true : false;
+
+    }
+
 }
