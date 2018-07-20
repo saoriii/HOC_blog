@@ -7,11 +7,8 @@
 
 <ul>
     @foreach($posts as $post)
-        @if($post->is_active == 1)
+  
          <li><a class="waves-effect waves-light btn" href="{{route('posts.show', $post->id)}}">{{$post->title}}</a></li>
-        @endif
-
-         <li><a href="{{route('posts.show', $post->id)}}">{{$post->title}}</a></li>
 
     @endforeach
 
