@@ -2,7 +2,7 @@
 
 @section('content')
 
-<header><a href="{{route('dashboard')}}">TABLEAU DE BORD</a></header>
+<header><a class="waves-effect waves-light btn" href="{{route('dashboard')}}">TABLEAU DE BORD</a></header>
 
 <ul>
     @foreach($comments as $comment)

@@ -2,7 +2,7 @@
 
 @section('content')
 
-<header><a href="{{route('dashboard')}}">TABLEAU DE BORD</a></header>
+<header><a class="waves-effect waves-light btn greyss" href="{{route('dashboard')}}">TABLEAU DE BORD</a></header>
 
 @foreach($Photos as $photo)
 
@@ -14,7 +14,7 @@
 
 {!! Form::file('file', null) !!}
 
-{!! Form::submit("Enregistrer l'image") !!}
+<button class="waves-effect waves-light btn greyss">{!! Form::submit("Enregistrer l'image") !!}</button>
 
 
 {!! Form::close() !!}

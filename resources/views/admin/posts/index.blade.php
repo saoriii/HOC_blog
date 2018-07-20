@@ -3,12 +3,12 @@
 @section('content')
 
 
-<header><a href="{{route('dashboard')}}">TABLEAU DE BORD</a></header>
+<header><a class="waves-effect waves-light btn" href="{{route('dashboard')}}">TABLEAU DE BORD</a></header>
 
 <ul>
     @foreach($posts as $post)
         @if($post->is_active == 1)
-         <li><a href="{{route('posts.show', $post->id)}}">{{$post->title}}</a></li>
+         <li><a class="waves-effect waves-light btn" href="{{route('posts.show', $post->id)}}">{{$post->title}}</a></li>
 
         @else
 
@@ -18,7 +18,7 @@
 
 </ul>
 
-<p><a href="{{route('posts.create')}}">Créer un post</a></p>
+<p><a class="btn-floating btn-large cyan pulse" href="{{route('posts.create')}}"><i class="material-icons">edit</i></a></p>
 
 
 
