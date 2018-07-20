@@ -45,7 +45,7 @@ class AdminPostsController extends Controller
      */
     public function store(AdminPostsRequest $request)
     {
-        $User = User::findOrFail(1);
+        // $User = User::findOrFail(2);
 
        
 
@@ -53,7 +53,7 @@ class AdminPostsController extends Controller
         $name = $file->getClientOriginalName();
         $file->move('images', $name);
 
-        $Post = $User->posts()->create([
+        $Post->posts()->create([
 
             'title' => $request->input('title'),
             'content' => $request->input('content'),
