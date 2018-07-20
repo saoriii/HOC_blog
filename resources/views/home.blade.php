@@ -10,12 +10,13 @@
             </div>
         </div>
     @endif
-      <div class="card red lighten-2">
-        <div class="card-content white-text">
-            <span class="card-title">Dashboard</span>
-            You are logged in!
+      <div class="card red lighten-2 cardif">
+        <div class="card-content white-text cardif">
+            <span class="card-title">Interface</span>
+            Vous êtes connecté!
         </div>
       </div>
+      <p><a class="waves-effect waves-light btn card" href="{{route('dashboard')}}">Menu</a></p>
     </div>
   </div>
 </div>

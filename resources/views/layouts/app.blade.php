@@ -27,9 +27,9 @@
                 </li>
             </ul>
         @endauth
-        <nav>
+        <nav class="cardiff">
             <div class="nav-wrapper">
-                <a href="{{ url('/') }}" class="brand-logo">&nbsp{{ config('app.name', 'Laravel') }}</a>
+                <a href="{{ url('/') }}" class="brand-logo">Blog Faresse</a>
                 <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
                 @guest
                     <ul class="right hide-on-med-and-down">
@@ -44,15 +44,17 @@
                     <ul class="right hide-on-med-and-down">
                         <li><a class="dropdown-button" href="#!" data-activates="dropdown1">{{ Auth::user()->name }}<i class="material-icons right">arrow_drop_down</i></a></li>
                     </ul>
-                    <ul class="right hide-on-med-and-down">
+                    <!-- <ul class="right hide-on-med-and-down">
                         <li><a class="dropdown-button" href="#!" data-activates="dropdown1">{{ Auth::user()->name }}<i class="material-icons right">arrow_drop_down</i></a></li>
                     </ul>
-                @endguest
+ -->                @endguest
             </div>
         </nav>
         @yield('content')
     </div>
     <!-- Scripts -->
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    @yield('scripts')
     <script src="{{ asset('js/app.js') }}"></script>
     <script>
         $(".button-collapse").sideNav()

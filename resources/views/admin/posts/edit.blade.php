@@ -19,13 +19,13 @@
         {!! Form::label("category_id", "Categorie") !!}
         {!! Form::select("category_id", $plucked) !!}
 
-        {!! Form::submit("Mettre à jour") !!}
+        <button class="waves-effect waves-light btn">{!! Form::submit("Mettre à jour") !!}</button>
 
     {!! Form::close() !!}
 
     {!! Form::open(["method" => "DELETE", "action" => ["AdminPostsController@destroy", $Post->id]]) !!}
 
-        {!! Form::submit("Supprimer") !!}
+        <button class="waves-effect waves-light btn">{!! Form::submit("Supprimer") !!}</button>
 
     {!! Form::close() !!}
 

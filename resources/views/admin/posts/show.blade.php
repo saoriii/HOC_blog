@@ -3,18 +3,18 @@
 
 @section('content')
 
-    <header><a href="{{route('posts.index')}}">Accueil</a></header>
+    <header><a class="waves-effect waves-light btn" href="{{route('posts.index')}}">Accueil</a></header>
  <h1> {{$Post->title}}</h1>
  <p>{{$Post->content}}</p>
 
     <p>Rédigé par {{$Post->user->name}}</p>
     <p>Catégorie : {{$Post->category->name}}</p>
 
-    <p><a href="{{route('posts.edit', $Post->id)}}">Modifier</a></p>
+    <p><a class="waves-effect waves-light btn" href="{{route('posts.edit', $Post->id)}}">Modifier</a></p>
 
     {!! Form::open(['method' => 'DELETE', 'action' => ['AdminPostsController@destroy', $Post->id]]) !!}
 
-        {!! Form::submit('Supprimer') !!}
+    <button class="waves-effect waves-light btn">{!! Form::submit('Supprimer') !!}</button>
 
     {!! Form::close() !!}
 
