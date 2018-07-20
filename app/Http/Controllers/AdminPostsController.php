@@ -112,8 +112,14 @@ class AdminPostsController extends Controller
         $Post = Post::findOrFail($id);
 
         $file = $request->file('file');
+
+        if(!empty($file)) {
+
         $name = $file->getClientOriginalName();
+
         $file->move('images', $name);
+
+        }
 
 
          $Post->update(
@@ -125,23 +131,28 @@ class AdminPostsController extends Controller
              ]
          );
 
-         if(empty($Post->photos()->first())){
+         if(!empty($file)) {
 
-            $Post->photos()->create(
-                [
-                    'file' => $name
-                ]
-                );
-        }
+            if(empty($Post->photos()->first())){
 
-        else{
-            $Post->photos()->update(
-                
-                [
-                    'file' => $name
-                ]
-                );
-        }
+                $Post->photos()->create(
+                    [
+                        'file' => $name
+                    ]
+                    );
+            }
+    
+            else{
+                $Post->photos()->update(
+                    
+                    [
+                        'file' => $name
+                    ]
+                    );
+            }
+    
+            }
+
 
 
         

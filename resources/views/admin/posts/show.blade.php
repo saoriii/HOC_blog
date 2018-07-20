@@ -15,6 +15,13 @@
 
     <p>Rédigé par {{$Post->user->name}}</p>
     <p>Catégorie : {{$Post->category->name}}</p>
+    
+    @if ($Post->is_active == 0)
+    <p>Inactif</p>
+    @else
+    <p>Actif</p>
+    @endif
+
 
     <p><a class="waves-effect waves-light btn" href="{{route('posts.edit', $Post->id)}}">Modifier</a></p>
 
@@ -27,20 +34,14 @@
     <p>Commentaires :</p>
 
 
-        {{-- Affiche les commentaires avec is_active à 0 sinon n'affiche rien --}}
+
         @foreach($Post->comments as $comment)
 
-            @if($comment->is_active == 1)
 
             {{$comment->author}} <br />
             {{$comment->content}} <br />
 
 
-            @else
-
-            {{-- n'affiche rien --}}
-
-            @endif
         @endforeach
 
 

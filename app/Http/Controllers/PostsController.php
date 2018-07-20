@@ -32,12 +32,25 @@ class PostsController extends Controller
         return view ('posts.show', compact('Post'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+    /* Méthode pour créer un commentaire visiteur */
+
+    public function comments(Request $request, $id)
+    {
+        $Post = Post::findOrFail($id);
+
+        $Post->comments()->create(
+            [
+                'author' => $request->input('author'),
+                'email' => $request->input('email'),
+                'content' => $request->input('content'),
+                'is_active' => 0 
+            ]
+            );
+        $Post->save();
+
+        return redirect()->route('visiteurs.posts.show', $id);
+
+    }
 
 
 

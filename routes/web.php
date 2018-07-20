@@ -22,15 +22,20 @@ Route::resource('admin/users', 'AdminUsersController');
 // Route posts admin
 Route::resource('admin/posts', 'AdminPostsController');
 
-// Route posts visiteurs
-Route::resource('posts', 'PostsController', ['only' =>[
-   'index', 'show'
-]]);
 
-//// Route categories visiteurs
-//Route::resource('categories', 'CategoriesController', ['only' =>[
-//    'index', 'show'
-//]]);
+Route::post('posts/comments/{id}', 'PostsController@comments')->name('posts.comments');
+// Route posts visiteurs
+Route::resource('posts', 'PostsController', ['only' => ['index', 'show'],
+                                            'as' => 'visiteurs'
+                                            ]
+);
+
+// Route categories visiteurs
+Route::resource('categories', 'CategoriesController', ['only' =>['index', 'show'],
+                                            'as' => 'visiteurs'
+                                            ]
+
+);
 
 // Route medias
 Route::get('admin/medias', 'AdminMediasController@index')->name('medias.index');

@@ -47,10 +47,7 @@
                     <ul class="right hide-on-med-and-down">
                         <li><a class="dropdown-button" href="#!" data-activates="dropdown1">{{ Auth::user()->name }}<i class="material-icons right">arrow_drop_down</i></a></li>
                     </ul>
-                    <!-- <ul class="right hide-on-med-and-down">
-                        <li><a class="dropdown-button" href="#!" data-activates="dropdown1">{{ Auth::user()->name }}<i class="material-icons right">arrow_drop_down</i></a></li>
-                    </ul>
- -->                @endguest
+                @endguest
             </div>
         </nav>
         @yield('content')
