@@ -3,14 +3,18 @@
 
 @section('content')
 
-<header><a href="{{route('dashboard')}}">TABLEAU DE BORD</a></header>
+<header><a class="waves-effect waves-light btn greyss" href="{{route('dashboard')}}">TABLEAU DE BORD</a></header>
 
-<ul>
+<ul class="collection">
     @foreach($users as $user)
-    <li><a href="{{route('users.show', $user->id)}}">{{$user->name}}</a></li>
+    <li class="collection-item avatar"><a href="{{route('users.show', $user->id)}}">{{$user->name}}</a>
+    <img src="{{$user->photos()->first() ? '/images/' . $user->photos()->first()->file : 'http://via.placeholder.com/50x50'}}" alt="" class="circle">
+    <a href="#!" class="secondary-content"><i class="material-icons ">grade</i></a>
+    </li>
     @endforeach
 </ul>
 
-    <p><a href="{{route('users.create')}}">Créer un utilisateur</a></p>
+    <p><a class="waves-effect waves-light btn greyss" href="{{route('users.create')}}">Créer un utilisateur</a></p>
 
     @stop
+

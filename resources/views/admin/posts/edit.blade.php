@@ -5,7 +5,7 @@
 
     <header><a href="{{route('posts.index')}}">Accueil</a></header>
 
-    {!! Form::model($Post, ["method" => "PATCH", "action" => ["AdminPostsController@update", $Post->id ]]) !!}
+    {!! Form::model($Post, ["method" => "PATCH", "action" => ["AdminPostsController@update", $Post->id ], 'files' => true]) !!}
 
         {!! Form::label("title", "Titre") !!}
         {!! Form::text("title", null) !!}<br />
@@ -19,13 +19,15 @@
         {!! Form::label("category_id", "Categorie") !!}
         {!! Form::select("category_id", $plucked) !!}
 
-        {!! Form::submit("Mettre à jour") !!}
+        {!! Form::file('file', null) !!}
+
+        <button class="waves-effect waves-light btn">{!! Form::submit("Mettre à jour") !!}</button>
 
     {!! Form::close() !!}
 
     {!! Form::open(["method" => "DELETE", "action" => ["AdminPostsController@destroy", $Post->id]]) !!}
 
-        {!! Form::submit("Supprimer") !!}
+        <button class="waves-effect waves-light btn">{!! Form::submit("Supprimer") !!}</button>
 
     {!! Form::close() !!}
 

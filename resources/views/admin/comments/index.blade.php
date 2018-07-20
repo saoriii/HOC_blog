@@ -2,7 +2,7 @@
 
 @section('content')
 
-<header><a href="{{route('dashboard')}}">TABLEAU DE BORD</a></header>
+<header><a class="waves-effect waves-light btn" href="{{route('dashboard')}}">TABLEAU DE BORD</a></header>
 
 <ul>
     @foreach($comments as $comment)
@@ -10,6 +10,11 @@
         {{$comment->content}}
         {{$comment->author}}
         {{$comment->email}}
+        @if ($comment->is_active == 0)
+            <p>Inactif</p>
+            @else
+            <p>Actif</p>
+        @endif
         
         <a href="{{route('comments.edit', $comment->id)}}">Modifier</a></li>
         {!! Form::open(['method' => 'DELETE', 'action' => ['AdminCommentsController@destroy', $comment->id]]) !!}

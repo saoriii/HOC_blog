@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Post;
 
 class PostsController extends Controller
 {
@@ -13,7 +14,9 @@ class PostsController extends Controller
      */
     public function index()
     {
-        return view ('posts.index');
+        $Posts = Post::all();
+
+        return view ('posts.index', compact('Posts'));
     }
 
     /**
@@ -24,15 +27,30 @@ class PostsController extends Controller
 
     public function show($id)
     {
-        return view ('posts.show');
+        $Post = Post::findOrFail($id);
+
+        return view ('posts.show', compact('Post'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+    /* Méthode pour créer un commentaire visiteur */
+
+    public function comments(Request $request, $id)
+    {
+        $Post = Post::findOrFail($id);
+
+        $Post->comments()->create(
+            [
+                'author' => $request->input('author'),
+                'email' => $request->input('email'),
+                'content' => $request->input('content'),
+                'is_active' => 0 
+            ]
+            );
+        $Post->save();
+
+        return redirect()->route('visiteurs.posts.show', $id);
+
+    }
 
 
 

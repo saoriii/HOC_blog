@@ -1,13 +1,28 @@
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
-<body>
+@extends('layouts.app')
 
-</body>
-</html>
+@section('content')
+
+<a href="{{route('visiteurs.categories.index')}}">Catégories</a>
+<a href="{{route('dashboard')}}">Admin</a>
+
+<table>
+    <th>
+            <tr>
+                <td style='font-weight:bold;'>Article</td>
+                <td style='font-weight:bold;'>Catégorie</td>
+                <td style='font-weight:bold;'>Auteur</td>
+            </tr>
+    </th>
+    @foreach($Posts as $Post)
+    <tr>
+        @if($Post->is_active == 1)
+        <td><a href="{{route('visiteurs.posts.show', $Post->id)}}">{{$Post->title}}</a></td> 
+        <td>{{$Post->category->name}}</td> 
+        <td>{{$Post->user->name}}</td>
+        @else
+
+        @endif
+    </tr>
+    @endforeach
+</table>
+@stop
