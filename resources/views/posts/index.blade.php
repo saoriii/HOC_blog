@@ -9,7 +9,7 @@
    <div style="display:flex; flex-flow: row wrap;">
     @foreach($Posts as $Post)
     <div class="card" style="width: 18rem;">
-  <img class="card-img-top" src="/images/{{$Post->photos()->first() ? $Post->photos()->first()->file : ""}}" alt="Card image cap">
+  <img class="card-img-top" style='height:250px;' src="/images/{{$Post->photos()->first() ? $Post->photos()->first()->file : ""}}" alt="Card image cap">
   <div class="card-body">
     <h5 class="card-title">{{$Post->title}}</h5>
     <p class="card-text">{{str_limit($Post->content, 20)}}</p>
