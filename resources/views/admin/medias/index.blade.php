@@ -1,15 +1,15 @@
-@extends('layouts.app')
+@extends('layouts/layoutBack')
 
 @section('content')
 
-<header><a class="waves-effect waves-light btn greyss" href="{{route('dashboard')}}">TABLEAU DE BORD</a></header>
+
 <div class="flex2">
-    <ul class="flex">
+    <ul style='display:flex; flex-wrap: wrap; justify-content: center;'>
 @foreach($Photos as $photo)
 
 
- <li>
-<a href="{{route('medias.edit', $photo->id)}}"><img src="/images/{{$photo->file}}"/></a>
+ <li style='list-style-type:none;'>
+<a href="{{route('medias.edit', $photo->id)}}"><img src="/images/{{$photo->file}}" style='width: 300px; height: 250px; margin: 10px;'/></a>
 </li>
 
 

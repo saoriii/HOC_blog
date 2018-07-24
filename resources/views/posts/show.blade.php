@@ -1,56 +1,93 @@
-@extends('layouts.app')
+@extends('layouts.layoutFront')
+
+
+@section('css')
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.1.0/styles/monokai-sublime.min.css">
+    <style>
+        /* update monokai-sublime.min.css for code display */
+        .hljs {
+                padding: 1em;
+            }
+    </style>
+@stop
 
 @section('content')
+	<ol class="breadcrumb">
+        <li>
+            <i class="fa fa-file-text"></i> <a href="{{ route('visiteurs.posts.index') }}">Posts</a>
+        </li>
+        <li class="active">
+            <i class="fa fa-eye"></i> Show
+        </li>
+    </ol>
+   
+    <!-- Blog post retrieved from DB -->
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3">
 
-<header><a href="{{route('visiteurs.posts.index')}}">Accueil</a></header>
+            <h2>
+                {{ $Post->title }}
+            </h2>
+            <p class="lead">
+                by {{ $Post->user->name }}
+        		<span class="badge" style="background-color: blue; vertical-align: 25%;">{{ $Post->category->name }}</span>
 
-<p>{{$Post->title}}</p>
+            </p>
+            <p><span class="glyphicon glyphicon-time"></span> Created on {{ $Post->created_at->format('F d, Y \a\t g:i A') }}</p>
+            <hr>
+            @if (!empty($Post->photos()->first()))
+                <img src="/images/{{ $Post->photos()->first()->file }}" alt="post image">
+                <hr>
+            @endif
+            {{$Post->content}}
+        </div><!-- /. col-md-6 -->
+    </div><!-- /. row -->
 
-@foreach ($Post->photos as $photo)
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+            <h4>Commentaires</h4>
 
-<img src='/images/{{$photo->file}}' />
-@endforeach
+                
 
-<p>{{$Post->created_at}}</p>
+                @foreach($Post->comments as $comment)
 
-<p>{{$Post->content}}</p>
+                    @if($comment->is_active == 1)
+                        <p style='font-size:1em; font-weight: bold;'>{{$comment->author}}</p>
+                        {{$comment->content}}
+                        {{$comment->created_at}}
+                    
 
-<p>Catégorie : {{$Post->category->name}}</p>
+                        @else
 
-<p>Auteur : {{$Post->user->name}}</p>
+                        @endif
 
-    <p>Commentaires :</p>
-
-
-{{-- Affiche les commentaires avec is_active à 0 sinon n'affiche rien --}}
-@foreach($Post->comments as $comment)
-
-    @if($comment->is_active == 1)
-
-    {{$comment->author}} <br />
-    {{$comment->content}} <br />
+                 @endforeach
 
 
-    @else
+                {!! Form::open(['method' => 'POST', 'action' => ['PostsController@comments', $Post->id]]) !!}
 
-    {{-- n'affiche rien --}}
+                {!! Form::label('author', 'Auteur') !!}
+                {!! Form::text('author',null, ['class' => 'form-control']) !!}<br />
 
-    @endif
-@endforeach
+                {!! Form::label('email', 'Email') !!}
+                {!! Form::text('email', null, ['class' => 'form-control']) !!} <br />
 
-{!! Form::open(['method' => 'POST', 'action' => ['PostsController@comments', $Post->id]]) !!}
+                {!! Form::label('content', 'Message') !!}
+                {!! Form::textarea('content', null, ['class' => 'form-control']) !!}<br />
 
-    {!! Form::label('author', 'Auteur') !!}
-    {!! Form::text('author', null) !!}
+                {!! Form::submit('Envoyer mon commentaire', ['class' => 'btn btn-default']) !!}
 
-    {!! Form::label('email', 'Email') !!}
-    {!! Form::text('email', null) !!}
-
-    {!! Form::label('content', 'Message') !!}
-    {!! Form::textarea('content', null) !!}
-
-    {!! Form::submit('Envoyer mon commentaire') !!}
-
-{!! Form::close() !!}
-
+                {!! Form::close() !!}
+        </div>
+    </div>
 @stop
+
+
+	
+	@section('scripts')
+    <!-- highlight.js -->
+    <script src="https://cdn.jsdelivr.net/highlight.js/latest/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script>
+	
+	@stop

@@ -1,8 +1,7 @@
-@extends("layouts.app")
+@extends('layouts/layoutBack')
 
 @section("content")
 
-    <header><a href="{{route('categories.index')}}">Accueil</a></header>
     @foreach($Category->photos as $photo)
 
     <img src="/images/{{$photo->file}}"/> 

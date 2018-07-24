@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.layoutBack')
 
 @section('content')
 
@@ -7,16 +7,16 @@
 {!! Form::model($Comment, ['method' => 'PATCH', 'action' => ['AdminCommentsController@update', $Comment->id]]) !!}
 
     {!! Form::label('content', 'Contenu') !!}
-    {!! Form::textarea('content', null) !!}
+    {!! Form::textarea('content', null,['class' => 'form-control']) !!}<br />
 
     {!! Form::label('author', 'Auteur') !!}
-    {!! Form::text('author', null) !!}
+    {!! Form::text('author', null,['class' => 'form-control']) !!}<br />
 
     {!! Form::label('email', 'Email') !!}
-    {!! Form::text('email', null) !!}
+    {!! Form::text('email', null, ['class' => 'form-control']) !!}<br />
 
     {!! Form::label('is_active', 'Affichage') !!}
-    {!! Form::select('is_active', ['0' => 'Inactif', '1' => 'Actif'], null) !!}
+    {!! Form::select('is_active', ['0' => 'Inactif', '1' => 'Actif'], null, ['class' => 'form-control form-control-sm']) !!}<br />
 
     {!! Form::submit('Mettre à jour') !!}
 
@@ -30,6 +30,7 @@
 
 <p>Article associé</p>
 
-{{$Comment->post->content}}
+<p>{{$Comment->post->title}}</p>
+<p>{{$Comment->post->content}}</p>
 
 @stop

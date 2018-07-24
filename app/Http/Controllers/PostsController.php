@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Post;
+use App\Category;
 
 class PostsController extends Controller
 {
@@ -16,7 +17,10 @@ class PostsController extends Controller
     {
         $Posts = Post::all();
 
-        return view ('posts.index', compact('Posts'));
+		$Categories = Category::all();
+	
+
+        return view ('posts.index', compact('Posts', 'Categories'));
     }
 
     /**

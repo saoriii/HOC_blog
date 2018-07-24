@@ -40,7 +40,7 @@ class AdminMediasController extends Controller
 
 
         $file = $request->file('file');
-        $name = $file->getClientOriginalName();
+        $name = time().$file->getClientOriginalName();
         $file->move('images', $name);
 
         $Photo = Photo::create(

@@ -1,8 +1,7 @@
-@extends('layouts.app')
+@extends('layouts/layoutBack')
 
 @section('content')
 
-    <header><a class="waves-effect waves-light btn" href="{{route('dashboard')}}">TABLEAU DE BORD</a></header>
 
     <ul>
      @foreach($categories as $category)
@@ -15,7 +14,7 @@
      @endforeach
     </ul>
 
-    <p><a class="waves-effect waves-light btn" href="{{route('categories.create')}}">Créer une catégorie</a></p>
+    <p><a class='form-control sm' href="{{route('categories.create')}}">Créer une catégorie</a></p>
 
 
 @stop

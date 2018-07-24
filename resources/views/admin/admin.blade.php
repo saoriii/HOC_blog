@@ -1,19 +1,20 @@
-@extends('layouts.app')
+@extends('layouts.layoutBack')
 
 @section('content')
-
-
-	<div id="loader"></div>
-	<div style="display:none;" id="myDiv" class="animate-bottom">
-
-	    <p><a class="waves-effect waves-light btn greyss" href="{{route('posts.index')}}">Gérer les posts</a></p>
-	    <p><a class="waves-effect waves-light btn greyss" href="{{route('categories.index')}}">Gérer les catégories</a></p>
-	    <p><a class="waves-effect waves-light btn greyss" href="{{route('users.index')}}">Gérer les utilisateurs</a></p>
-	    <p><a class="waves-effect waves-light btn greyss" href="{{route('comments.index')}}">Gérer les commentaires</a></p>
-	    <p><a class="waves-effect waves-light btn greyss" href="{{route('medias.index')}}">Gérer les photos</a></p>
-	    <p><a class="waves-effect waves-light btn greysss" href="{{route('posts.index')}}">Admin</a></p>
-
-	</div>
+	<!-- Page Heading -->
+    <div class="row">
+        <div class="col-lg-12" style="">
+            <h1 class="page-header">
+                Panneau d'administration
+            </h1>
+            <div class="jumbotron">
+  <h1 class="display-4">Bienvenue !</h1>
+  <hr class="my-4">
+  <p>Bienvenue sur le panneau d'administration de Tareq, Faresse, Coralie et Camille.</p>
+</div
+            
+        </div>
+    </div><!-- /.row -->
 
 @stop
 @section("scripts")
