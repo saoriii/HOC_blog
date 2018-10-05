@@ -8,10 +8,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>{{ config('app.name', 'Laravel') }}</title>
     <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <link href="path/to/lightbox.css" rel="stylesheet"> 
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B" crossorigin="anonymous">
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js" integrity="sha384-o+RDsa0aLu++PJvFqy8fFScvbHFLtbvScb8AjopnFD+iEQ7wo/CG0xlczd+2O/em" crossorigin="anonymous"></script>   
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">    
     @yield('css')
 </head>
 <body>
@@ -30,11 +27,12 @@
                 </li>
             </ul>
         @endauth
-        <nav class="navbar navbar-dark bg-dark" >
-            <div class="nav-wrapper" style="width: 100%">
+        <nav class="cardiff">
+            <div class="nav-wrapper">
                 <a href="{{ url('/posts') }}" class="brand-logo">Blog</a>
-                <a class="navbar-brand" href="#"></a>
-  
+                <ul class="right hide-on-med-and-down">
+                    <li><a href="{{ route('users.index') }}"><i class="material-icons left">search</i>Rechercher</a></li>
+                </ul>
                 <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
                 @guest
                     <ul class="right hide-on-med-and-down">
@@ -55,7 +53,30 @@
         @yield('content')
     </div>
 
-       
+       <!-- <footer class="page-footer">
+          <div class="container">
+            <div class="row">
+              <div class="col l6 s12">
+                <h5 class="white-text">Blog Laravel</h5>
+                <p class="grey-text text-lighten-4">Blog créer par Coralie, Tareq, Camille et Faresse.</p>
+              </div>
+              <div class="col l4 offset-l2 s12">
+                <h5 class="white-text">Liens</h5>
+                <ul>
+                  <li><a class="grey-text text-lighten-3" href="#!">Twitter</a></li>
+                  <li><a class="grey-text text-lighten-3" href="#!">Facebook</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="footer-copyright">
+            <div class="container">
+            © 2018 Copyright Laravel
+            <a class="grey-text text-lighten-4 right" href="#!">Plus de liens</a>
+            </div>
+          </div>
+        </footer> -->
+    <!-- Scripts -->
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     @yield('scripts')
     <script src="{{ asset('js/app.js') }}"></script>
@@ -63,6 +84,5 @@
         $(".button-collapse").sideNav()
         $(".dropdown-button").dropdown()
     </script>
-    <script src="path/to/lightbox.js"></script>
 </body>
 </html>
