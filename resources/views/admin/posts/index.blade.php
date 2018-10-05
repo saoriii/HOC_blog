@@ -17,7 +17,6 @@
 
 <p><a class="btn-floating btn-large cyan pulse" href="{{route('posts.create')}}"><i class="material-icons">edit</i></a></p>
 
-<a href="https://i.imgur.com/8AU9W4K.jpg" data-lightbox="image-1" data-title="My caption">Image #1</a>
 
 
 
